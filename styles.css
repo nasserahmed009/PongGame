@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap');
+*{
+  text-align: center;
+  box-sizing: border-box;
+  margin: 0 auto;
+}
+.gameLogo{
+  width: 100px;
+}
+.option{
+  margin: 15px 0px;
+}
+h1.gameTitle{
+  font-family: 'Press Start 2P', cursive;
+}
+p{
+  font-family: monospace;
+  color: #888;
+}
+a.color{
+  width: 40px;
+  height: 40px;
+  display: inline-block;
+  margin: 10px 5px;
+  text-decoration: none;
+  line-height: 40px;
+}
+a.color.black{
+  background: #000;
+  color: #000;
+}
+a.color.green{
+  background: #03c14d;
+  color: #03c14d;
+}
+a.color.blue{
+  background: #6a5cff;
+  color: #6a5cff;
+}
+a.color.red{
+  background: #ff4747;
+  color: #ff4747;
+}
+a#activeColor{
+  color: #fff !important;
+}
+a i{
+  pointer-events: none;
+}
+input#player1Name{
+  padding: 15px;
+  border: 1px solid #ccc;
+  outline: 0px;
+  width: 250px;
+
+}
+canvas{
+  display: block;
+  margin: 0 auto;
+}
+.playBtn{
+  display: block;
+  background: #00c14d;
+  width: 250px;
+  height: 40px;
+  line-height: 40px;
+  margin: 10px auto;
+  color: #fff;
+  text-decoration: none;
+  font-family: 'Press Start 2P', cursive;
+}
+.playBtn img{
+  height: 20px;
+}
+.clear{
+  clear: both;
+}
+#ballSpeed{
+  display: block;
+  margin: 15px auto;
+}

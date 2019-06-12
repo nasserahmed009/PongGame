@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <title></title>
+  </head>
+  <body>
+    <img src="assets/tennis-ball.svg" alt="tennisBall" class="gameLogo">
+    <h1 class="gameTitle">Tennis Arcade Game</h1>
+
+    <div class="chooseColor option">
+      <p>Choose playground color</p>
+      <div class="colorsContainer">
+        <a href="" id="activeColor" class="color black" onclick="changePlayGroundColor(event, '#000000')">
+          <i class="fas fa-check"></i>
+        </a>
+        <a href="" class="color red" onclick="changePlayGroundColor(event, '#ff4747')">.</a>
+        <a href="" class="color green" onclick="changePlayGroundColor(event, '#03c14d')">.</a>
+        <a href="" class="color blue" onclick="changePlayGroundColor(event, '#6a5cff')">.</a>
+      </div>
+    </div>
+
+    <div class="chooseSpeed option">
+      <p>Choose ball speed</p>
+      <input id="ballSpeed" type="range" min="3" max="10" value="5" onchange="changeBallSpeed()">
+    </div>
+
+
+
+    <input type="text" value="player1" id="player1Name" placeholder="Enter player 1 name" onchange="updateNames()">
+    <a href="" onclick="startStopGame(event)" class="playBtn">
+      Play
+    </a>
+    <canvas id="canvas" width="1000" height="600"></canvas>
+
+    <script src="tennisGame.js"></script>
+  </body>
+</html>
