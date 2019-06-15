@@ -3,6 +3,8 @@
   text-align: center;
   box-sizing: border-box;
   margin: 0 auto;
+  padding: 0px;
+  margin: 0px;
 }
 .gameLogo{
   width: 100px;
@@ -57,6 +59,7 @@ input#player1Name{
 canvas{
   display: block;
   margin: 0 auto;
+  margin-bottom: 100px;
 }
 .playBtn{
   display: block;

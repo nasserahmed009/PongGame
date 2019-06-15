@@ -21,7 +21,7 @@ let player1Name = document.getElementById('player1Name').value;
 let player1Score = 0;
 let player2Score = 0;
 
-function startStopGame(event){
+function startPauseGame(event){
   event.preventDefault();
   playGame = !playGame;
   if(playGame){
@@ -44,7 +44,7 @@ function changePlayGroundColor(event, color){
 }
 
 function changeBallSpeed(){
-  resetGame(); 
+  resetGame();
   dx = dy = document.getElementById('ballSpeed').value;
 }
 
@@ -107,9 +107,14 @@ function increaseDifficulty(){
 function getMousePosition(event){
   let playGround = canvas.getBoundingClientRect();
   let root = document.documentElement;
+
+  console.log(event.y);
+  console.log(playGround.top);
+  console.log(root.scrollTop);
+
   return {
-    x: event.x - playGround.left - root.scrollLeft,
-    y: event.y - playGround.top - root.scrollTop,
+    x: event.x - playGround.left,
+    y: event.y - playGround.top ,
   }
 }
 
@@ -127,7 +132,12 @@ function moveBall(){
     if(ballY>paddle1Y && ballY<paddle1Y+paddleHeight)dx=-dx;
     else{
       player2Score++;
-      resetGame();
+      playGame = false;
+      //adding delay to the game when a player scores
+      setTimeout(function(){
+        resetGame();
+        playGame = true;
+      },1000);
     }
   }
 
@@ -137,7 +147,12 @@ function moveBall(){
     if(ballY>paddle2Y && ballY<paddle2Y+paddleHeight) dx=-dx;
     else {
       player1Score++;
-      resetGame();
+      playGame = false;
+      //adding delay to the game when a player scores
+      setTimeout(function(){
+        resetGame();
+        playGame = true;
+      },1000);
     }
   }
 
@@ -150,6 +165,7 @@ function moveBall(){
 canvas.addEventListener('mousemove', function(event){
   if(!playGame) return;
   let mousePos = getMousePosition(event);
+  console.log(mousePos);
 
   //moving paddle1 with the movement of mouse
   paddle1Y = mousePos.y - paddleHeight/2; //to move the paddle from its center
@@ -157,7 +173,6 @@ canvas.addEventListener('mousemove', function(event){
 });
 
 setInterval(function(){
-
   drawPlayground(playGroundColor);
   drawNet();
   drawScores();
