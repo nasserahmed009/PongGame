@@ -20,13 +20,17 @@ let paddleWidth = 10;
 let paddle1Y = 100;
 let paddle2Y = 100;
 
-let player1Name = document.getElementById('player1Name').value;
+let player1Name = 'player1';
 let player1Score = 0;
 let player2Score = 0;
 let finalScore = 3;
 
 function startPauseGame(event){
   event.preventDefault();
+  if(document.getElementById('player1Name').value.trim().length == 0){
+    alert('please enter your name');
+    return;
+  }
   pauseGame = !pauseGame;
   if(!pauseGame){
     event.target.text = "Pause";
@@ -124,7 +128,7 @@ function showLevelUpWindow(){
   canvasContext.fillText("click to level up", (canvas.width/2)-((canvasContext.measureText("click to level up").width)/2), canvas.height/2 + 50);
 }
 
-function shhowGameOverWindow(){
+function showGameOverWindow(){
   drawPlayground(playGroundColor);
   canvasContext.fillStyle = "white";
   canvasContext.font = "10px PressStart2P";
@@ -133,13 +137,19 @@ function shhowGameOverWindow(){
 }
 
 function checkWinner(){
-  if(player1Score>finalScore){
+  if(player1Score>=finalScore){
     showLevelUpWindow();
     showingScreen = true;
     return true;
-  }else if(player2Score>finalScore){
-    shhowGameOverWindow();
+  }else if(player2Score>=finalScore){
+    showGameOverWindow();
     showingScreen = true;
+
+    databaseRef.push({
+      name:player1Name,
+      score: (gameLevel-1)*3 + player1Score,
+    });
+
     return true;
   }else{
     showingScreen = false;
