@@ -174,8 +174,18 @@ function getMousePosition(event){
 }
 
 function computerPaddlePlay(){
-  if(paddle2Y+paddleHeight/2 < ballY-30) paddle2Y+=9.5;
-  else if(paddle2Y+paddleHeight/2 > ballY+30) paddle2Y-=9.5;
+  if(paddle2Y+paddleHeight/2 < ballY-30){
+    let increment = parseInt(document.getElementById('ballSpeed').value)+4.5;
+    if(increment<7) increment=7;
+    if(increment>11) increment=11;
+    paddle2Y+= increment;
+  }
+  else if(paddle2Y+paddleHeight/2 > ballY+30) {
+    let decrement = parseInt(document.getElementById('ballSpeed').value)+4.5;
+    if(decrement<7) decrement=7;
+    if(decrement>11) decrement=11;
+    paddle2Y-= decrement;
+  }
 }
 
 function moveBall(){
