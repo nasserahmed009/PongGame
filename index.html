@@ -35,6 +35,36 @@
     </a>
     <canvas id="canvas" width="1000" height="600"></canvas>
 
+         <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+     <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-app.js"></script>
+
+     <!-- Add Firebase products that you want to use -->
+     <script src="https://www.gstatic.com/firebasejs/3.1.0/firebase-database.js"></script>
+
+
+    <script>
+      // Your web app's Firebase configuration
+      var firebaseConfig = {
+        apiKey: "AIzaSyBwJw_Cd18LBEjqhWSnE1N2XCYGB7W88ns",
+        authDomain: "ponggame009.firebaseapp.com",
+        databaseURL: "https://ponggame009.firebaseio.com",
+        projectId: "ponggame009",
+        storageBucket: "ponggame009.appspot.com",
+        messagingSenderId: "548167701318",
+        appId: "1:548167701318:web:f7a36a7a2b3a9617"
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+
+      var database = firebase.database();
+      var databaseRef = database.ref('scores/');
+
+      databaseRef.push({
+        name:'ahmed',
+        score: 50,
+      });
+    </script>
+
     <script src="tennisGame.js"></script>
   </body>
 </html>
