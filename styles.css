@@ -42,12 +42,17 @@
   font-display: swap;
   src: local('Press Start 2P Regular'), local('PressStart2P-Regular'), url(https://fonts.gstatic.com/s/pressstart2p/v7/e3t4euO8T-267oIAQAu6jDQyK3nVivNm4I81.woff2) format('woff2');
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}*{
+}
+
+*{
   text-align: center;
   box-sizing: border-box;
   margin: 0 auto;
   padding: 0px;
   margin: 0px;
+}
+body{
+  padding: 25px 0px;
 }
 .gameLogo{
   width: 100px;
@@ -55,10 +60,10 @@
 .option{
   margin: 15px 0px;
 }
-h1.gameTitle{
+h1{
   font-family: 'PressStart2P', cursive;
 }
-p{
+p, td{
   font-family: monospace;
   color: #888;
 }
@@ -102,7 +107,7 @@ input#player1Name{
 canvas{
   display: block;
   margin: 0 auto;
-  margin-bottom: 100px;
+  margin-bottom: 30px;
 }
 .playBtn{
   display: block;
@@ -124,4 +129,20 @@ canvas{
 #ballSpeed{
   display: block;
   margin: 15px auto;
+}
+
+.scoresTable{
+  margin: 0 auto;
+  border-collapse: collapse;
+  margin-top: 15px;
+
+}
+.scoresTable thead td{
+  font-weight: bold;
+  color: #000;
+}
+.scoresTable td{
+  width: 300px;
+  padding: 10px;
+  border: 1px solid #ccc
 }

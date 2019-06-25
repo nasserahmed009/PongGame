@@ -1,3 +1,23 @@
+//firebase setup
+
+// Your web app's Firebase configuration
+var firebaseConfig = {
+  apiKey: "AIzaSyBwJw_Cd18LBEjqhWSnE1N2XCYGB7W88ns",
+  authDomain: "ponggame009.firebaseapp.com",
+  databaseURL: "https://ponggame009.firebaseio.com",
+  projectId: "ponggame009",
+  storageBucket: "ponggame009.appspot.com",
+  messagingSenderId: "548167701318",
+  appId: "1:548167701318:web:f7a36a7a2b3a9617"
+};
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+
+var database = firebase.database();
+var databaseRef = database.ref('scores/');
+
+
+
 let canvas = document.getElementById('canvas');
 let canvasContext = canvas.getContext('2d');
 
@@ -24,6 +44,8 @@ let player1Name = 'player1';
 let player1Score = 0;
 let player2Score = 0;
 let finalScore = 3;
+
+let scores = [];
 
 function startPauseGame(event){
   event.preventDefault();
@@ -263,6 +285,32 @@ canvas.addEventListener('click', function(){
 });
 
 
+databaseRef.on('value', updateScoresTable,(error)=>{
+  console.log(error);
+});
+
+function updateScoresTable(response){
+  let scoresObject = response.val();
+  let keysArray = Object.keys(scoresObject);
+
+  for(let i=scores.length; i<keysArray.length; i++){
+    let newScore = {
+      name: scoresObject[ keysArray[i] ].name,
+      score: scoresObject[ keysArray[i] ].score,
+    }
+    scores.push(newScore); //adding scores to the scores array
+
+    //adding score to the DOM
+    let tr = document.createElement("TR");
+    let tdName = document.createElement("TD");
+    let tdScore = document.createElement("TD");
+    tdName.appendChild(document.createTextNode(newScore.name));
+    tdScore.appendChild(document.createTextNode(newScore.score));
+    tr.appendChild(tdName);
+    tr.appendChild(tdScore);
+    document.getElementById('scoresTableBody').appendChild(tr);
+  }
+}
 
 setInterval(function(){
   if(showingScreen) return;
